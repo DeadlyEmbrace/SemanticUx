@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{867A42DC-FC9B-4730-A8DE-610AAD901DC8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SemanticUx</RootNamespace>
+    <AssemblyName>SemanticUx</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\HtmlAttributeAttribute.cs" />
+    <Compile Include="Attributes\HtmlClassAttribute.cs" />
+    <Compile Include="Attributes\HtmlContentAttribute.cs" />
+    <Compile Include="Attributes\HtmlDocTypeAttribute.cs" />
+    <Compile Include="Attributes\HtmlTagAttribute.cs" />
+    <Compile Include="Components\A.cs" />
+    <Compile Include="Components\Body.cs" />
+    <Compile Include="Components\ComponentBase.cs" />
+    <Compile Include="Components\ComponentList.cs" />
+    <Compile Include="Components\Content.cs" />
+    <Compile Include="Components\DefaultHtmlComposer.cs" />
+    <Compile Include="Components\Div.cs" />
+    <Compile Include="Components\Head.cs" />
+    <Compile Include="Components\Html5Document.cs" />
+    <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\IComponentList.cs" />
+    <Compile Include="Components\IHtmlComposer.cs" />
+    <Compile Include="Components\Input.cs" />
+    <Compile Include="Components\Label.cs" />
+    <Compile Include="Components\Link.cs" />
+    <Compile Include="Components\Meta.cs" />
+    <Compile Include="Components\Script.cs" />
+    <Compile Include="Components\Scripts.cs" />
+    <Compile Include="Components\StyleSheet.cs" />
+    <Compile Include="Components\StyleSheets.cs" />
+    <Compile Include="Components\Target.cs" />
+    <Compile Include="Components\Title.cs" />
+    <Compile Include="Controls\Align.cs" />
+    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\ButtonState.cs" />
+    <Compile Include="Controls\Color.cs" />
+    <Compile Include="Controls\ContentHeader.cs" />
+    <Compile Include="Controls\ControlBase.cs" />
+    <Compile Include="Controls\Field.cs" />
+    <Compile Include="Controls\Form.cs" />
+    <Compile Include="Controls\Grid.cs" />
+    <Compile Include="Controls\Icon.cs" />
+    <Compile Include="Controls\IconHeader.cs" />
+    <Compile Include="Controls\IControl.cs" />
+    <Compile Include="Controls\Menu.cs" />
+    <Compile Include="Controls\Message.cs" />
+    <Compile Include="Controls\Modal.cs" />
+    <Compile Include="Controls\Pusher.cs" />
+    <Compile Include="Controls\Segment.cs" />
+    <Compile Include="Controls\Segments.cs" />
+    <Compile Include="Controls\Sidebar.cs" />
+    <Compile Include="Controls\Size.cs" />
+    <Compile Include="Controls\Symbols.cs" />
+    <Compile Include="Extensions\Html5DocumentExtensions.cs" />
+    <Compile Include="Extensions\IControlExtensions.cs" />
+    <Compile Include="Extensions\ILIstExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
