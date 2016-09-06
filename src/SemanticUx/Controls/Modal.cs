@@ -20,7 +20,7 @@ namespace SemanticUx.Controls
 
         public ModalActions Actions { get; }
         public Icon CloseIcon { get; }
-        public new ModalContent Content { get; }
+        public ModalContent Content { get; }
 
         [HtmlClass("fullscreen")]
         public bool FullScreen { get; set; }

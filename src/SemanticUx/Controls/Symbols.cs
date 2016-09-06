@@ -2,6 +2,8 @@
 {
     public static class Symbols
     {
+        public const string Dropdown = "dropdown";
+
         public static class Audio
         {
             public const string Backward = "backward";

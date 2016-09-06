@@ -14,8 +14,6 @@ namespace SemanticUx.Attributes
             Name = name;
         }
 
-        public string Prefix { get; set; } = "ui";
-
         public string Name { get; set; }
     }
 }

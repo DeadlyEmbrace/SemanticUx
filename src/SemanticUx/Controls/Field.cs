@@ -4,7 +4,7 @@ using SemanticUx.Components;
 namespace SemanticUx.Controls
 {
     [HtmlTag("div")]
-    [HtmlClass("field", Prefix = null)]
+    [HtmlClass("field")]
     public class Field : ControlBase
     {
         public Field()
@@ -18,6 +18,7 @@ namespace SemanticUx.Controls
             // TODO how can label not be rendered if it has no content
             label = new Label(this);
             input = new Input(this);
+            Prefix = null;
         }
 
         public string PlaceHolder
@@ -32,17 +33,8 @@ namespace SemanticUx.Controls
             }
         }
 
-        public string Label
-        {
-            get
-            {
-                return label.Content;
-            }
-            set
-            {
-                label.Content = value;
-            }
-        }
+        [HtmlContent]
+        public string Label { get; set; }
 
         public InputType Type
         {

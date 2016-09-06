@@ -4,11 +4,11 @@ namespace SemanticUx.Components
 {
     public class ComponentList : List<IComponent>, IComponentList
     {
-        public void Render(IHtmlComposer htmlComposer)
+        public void Render(IHtmlBuilder htmlBuilder)
         {
             foreach (var component in this)
             {
-                htmlComposer.Compose(component);
+                htmlBuilder.Compose(component);
             }
         }
     }

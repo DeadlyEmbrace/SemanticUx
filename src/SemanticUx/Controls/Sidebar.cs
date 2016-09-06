@@ -19,21 +19,26 @@ namespace SemanticUx.Controls
                 .ToString();
         }
 
-        public void Add(ISidebarItem sidebarItem)
+        public ISidebarItem Add(ISidebarItem sidebarItem)
         {
             Components.Add(sidebarItem);
+
+            return sidebarItem;
         }
 
-        public void Add(string title, string href)
+        public ISidebarItem Add(string title, string href)
         {
-            Components.Add(new SidebarItem
+            var result = new SidebarItem
             {
                 Title = title,
                 Href = href
-            });
+            };
+            Components.Add(result);
+
+            return result;
         }
 
-        public void Add(string symbol, string title, string href)
+        public ISidebarItem Add(string symbol, string title, string href)
         {
             var sidebarItem = new SidebarItem
             {
@@ -42,6 +47,8 @@ namespace SemanticUx.Controls
             };
             sidebarItem.Icon.Symbol = symbol;
             Components.Add(sidebarItem);
+
+            return sidebarItem;
         }
 
         [HtmlClass]
@@ -77,8 +84,8 @@ namespace SemanticUx.Controls
     }
 
     [HtmlTag("a")]
-    [HtmlClass("item", Prefix = null)]
-    public class SidebarItem : ComponentBase,
+    [HtmlClass("item")]
+    public class SidebarItem : ControlBase,
         ISidebarItem
     {
         public SidebarItem()
@@ -89,21 +96,13 @@ namespace SemanticUx.Controls
         public SidebarItem(IComponent parent)
             : base(parent)
         {
+            Prefix = null;
         }
 
         public Icon Icon => icon ?? (icon = new Icon(this));
 
-        public string Title
-        {
-            get
-            {
-                return Content;
-            }
-            set
-            {
-                Content = value;
-            }
-        }
+        [HtmlContent]
+        public string Title { get; set; }
 
         [HtmlAttribute("href")]
         public string Href { get; set; }

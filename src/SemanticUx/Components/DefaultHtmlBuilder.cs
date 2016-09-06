@@ -3,12 +3,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using SemanticUx.Attributes;
+using SemanticUx.Controls;
 
 namespace SemanticUx.Components
 {
-    public class DefaultHtmlComposer : IHtmlComposer
+    public class DefaultHtmlBuilder : IHtmlBuilder
     {
-        public DefaultHtmlComposer()
+        public DefaultHtmlBuilder()
         {
             _stringBuilder = new StringBuilder();
         }
@@ -18,9 +19,7 @@ namespace SemanticUx.Components
 //#if DEBUG
 //            var stopWatch = new Stopwatch();
 //            stopWatch.Start();
-//#endif
-            var content = default(IComponent);
-
+//#endif            
             var tagAttribute = component.GetType()
                 .GetCustomAttributes<HtmlTagAttribute>(true)
                 .ToList()
@@ -35,37 +34,35 @@ namespace SemanticUx.Components
                 _stringBuilder.Append(">");
             }
 
-            // TODO render content ? with index            
-            var htmlContentProperty = component.GetType()
+            var htmlContentProperties = component.GetType()
                 .GetProperties()
-                .FirstOrDefault(propertyInfo => propertyInfo.GetCustomAttribute<HtmlContentAttribute>() != null);
+                .Where(propertyInfo => propertyInfo.GetCustomAttribute<HtmlContentAttribute>() != null);
 
-            if (htmlContentProperty != null)
+            foreach (var htmlContentProperty in htmlContentProperties)
             {
-                if (component is Content)
+                var value = htmlContentProperty.GetValue(component);
+                var attr = htmlContentProperty.GetCustomAttribute<HtmlContentAttribute>();
+                if (value != null)
                 {
-                    _stringBuilder.Append(htmlContentProperty.GetValue(component));
+                    component.Components.Add(new Content(value.ToString(), attr.Index));
                 }
-                else
-                {
-                    var value = htmlContentProperty.GetValue(component);
-                    if (value != null)
-                    {
-                        content = new Content(value.ToString());
-                        component.Components.Add(content);
-                    }
-                }
+            }
+
+            if (component.Count > 0)
+            {
+                component.Components.Sort();
             }
 
             for (var i = 0; i < component.Count; i++)
             {
-                // TODO set position of content based on indexes before rendering
-                Compose(component[i]);
-            }
-
-            if (content != null)
-            {
-                component.Components.Remove(content);
+                if (component[i] is Content)
+                {
+                    _stringBuilder.Append(component[i]);
+                }
+                else
+                {
+                    Compose(component[i]);
+                }                
             }
 
             if (tagAttribute?.Tag != null
@@ -172,11 +169,13 @@ namespace SemanticUx.Components
 
             if (classClassAttribute != null)
             {
-                if (classClassAttribute.Prefix != null)
-                {
-                    classes.Insert(0, classClassAttribute.Prefix);
-                }                
                 classes.Add(classClassAttribute.Name);
+            }
+
+            var control = component as IControl;
+            if (control?.Prefix != null)
+            {
+                classes.Insert(0, control.Prefix);
             }
 
             // TODO not cool but works - cannot assume implementation type

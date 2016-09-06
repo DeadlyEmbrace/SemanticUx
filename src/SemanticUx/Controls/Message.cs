@@ -15,27 +15,15 @@ namespace SemanticUx.Controls
         public Message(IComponent parent)
             : base(parent)
         {
-            messageHeader = new MessageHeader(this);
+            Header = new MessageHeader(this);
         }
 
-        public string Header
-        {
-            get
-            {
-                return messageHeader.Content;
-            }
-            set
-            {
-                messageHeader.Content = value;
-            }
-        }
-
-        protected MessageHeader messageHeader;
+        public MessageHeader Header;
     }
 
     [HtmlTag("div")]
-    [HtmlClass("header", Prefix = null)]
-    public class MessageHeader : ComponentBase
+    [HtmlClass("header")]
+    public class MessageHeader : ControlBase
     {
         public MessageHeader()
             : this(null)
@@ -45,6 +33,7 @@ namespace SemanticUx.Controls
         public MessageHeader(IComponent parent)
             : base(parent)
         {
+            Prefix = null;
         }
     }
 }

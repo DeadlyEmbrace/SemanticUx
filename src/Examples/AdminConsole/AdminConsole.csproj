@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controls\MainMenu.cs" />
+    <Compile Include="Controls\StaticMenuItem.cs" />
     <Compile Include="Modules\AccessControl\Models\LoginModel.cs" />
     <Compile Include="Modules\AccessControl\Module.cs" />
     <Compile Include="Modules\AccessControl\Views\LoginView.cs" />
@@ -114,7 +115,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)
-xcopy Resources\* $(TargetDir)assets\* /s /y</PostBuildEvent>
+xcopy Resources\* $(TargetDir)assets\* /s /y
+cd $(ProjectDir)
+xcopy Assets\* $(TargetDir)assets\* /s /y
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

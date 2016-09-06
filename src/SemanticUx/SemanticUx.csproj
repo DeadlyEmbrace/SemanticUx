@@ -51,13 +51,13 @@
     <Compile Include="Components\ComponentBase.cs" />
     <Compile Include="Components\ComponentList.cs" />
     <Compile Include="Components\Content.cs" />
-    <Compile Include="Components\DefaultHtmlComposer.cs" />
+    <Compile Include="Components\DefaultHtmlBuilder.cs" />
     <Compile Include="Components\Div.cs" />
     <Compile Include="Components\Head.cs" />
     <Compile Include="Components\Html5Document.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Components\IComponentList.cs" />
-    <Compile Include="Components\IHtmlComposer.cs" />
+    <Compile Include="Components\IHtmlBuilder.cs" />
     <Compile Include="Components\Input.cs" />
     <Compile Include="Components\Label.cs" />
     <Compile Include="Components\Link.cs" />
@@ -70,13 +70,14 @@
     <Compile Include="Components\Title.cs" />
     <Compile Include="Controls\Align.cs" />
     <Compile Include="Controls\Button.cs" />
-    <Compile Include="Controls\ButtonState.cs" />
     <Compile Include="Controls\Color.cs" />
     <Compile Include="Controls\ContentHeader.cs" />
     <Compile Include="Controls\ControlBase.cs" />
+    <Compile Include="Controls\Dropdown.cs" />
     <Compile Include="Controls\Field.cs" />
     <Compile Include="Controls\Form.cs" />
     <Compile Include="Controls\Grid.cs" />
+    <Compile Include="Controls\Header.cs" />
     <Compile Include="Controls\Icon.cs" />
     <Compile Include="Controls\IconHeader.cs" />
     <Compile Include="Controls\IControl.cs" />
@@ -91,7 +92,9 @@
     <Compile Include="Controls\Symbols.cs" />
     <Compile Include="Extensions\Html5DocumentExtensions.cs" />
     <Compile Include="Extensions\IControlExtensions.cs" />
+    <Compile Include="Extensions\IDropdownExtensions.cs" />
     <Compile Include="Extensions\ILIstExtensions.cs" />
+    <Compile Include="Extensions\MenuExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -84,4 +84,12 @@ namespace SemanticUx.Controls
         Reset,
         Submit
     }
+
+    public enum ButtonState
+    {
+        _,
+        Active,
+        Disabled,
+        Loading
+    }
 }

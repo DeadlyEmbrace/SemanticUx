@@ -1,4 +1,5 @@
-﻿using SemanticUx.Controls;
+﻿using AdminConsole.Controls;
+using SemanticUx.Controls;
 using SemanticUx.Extensions;
 
 namespace AdminConsole.Views
@@ -8,22 +9,27 @@ namespace AdminConsole.Views
         public DefaultView(dynamic model)
         {
             // TODO make more composable by tracking registred modules and paths
-            Navigator.Add(Symbols.WebContent.Sidebar, "Home", "/");
+            Navigator.Add(Symbols.WebContent.Home, "Home", "/");
             Navigator.Add(Symbols.WebContent.Calendar, "Projects", "/");
             Navigator.Add(Symbols.WebContent.Cloud, "Tasks", "/");
 
-            var modal = new Modal(Container)
+            MainMenu.Add(Symbols.WebContent.Sidebar, "#")
+                .Toggle(Navigator);
+            MainMenu.Add(new StaticMenuItem
             {
-                Type = ModalType.Basic
-            };
+               Title = "Home" 
+            });
 
-            var button = new Button(Container)
+            var controlDropdown = new DropdownMenu(ControlMenu)
             {
-                Title = "Beep"
+                Title = "Bob Jones"
             };
+            controlDropdown.Show();
 
-            //button.Show(modal);
-            button.Toggle(Navigator);
+            controlDropdown.Add(Symbols.UserTypes.User, "Profile", "/");
+            controlDropdown.Add(Symbols.WebContent.Settings, "Settings", "/");
+            controlDropdown.AddDivider();
+            controlDropdown.Add(Symbols.Computer.Power, "Sign Out", "/");
 
         }
     }
