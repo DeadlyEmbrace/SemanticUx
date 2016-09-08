@@ -20,6 +20,9 @@ namespace SemanticUx.Components
 
         [HtmlAttribute("placeholder")]
         public string PlaceHolder { get; set; }
+
+        [HtmlContent]
+        public string Value { get; set; }
     }
 
     public enum InputType

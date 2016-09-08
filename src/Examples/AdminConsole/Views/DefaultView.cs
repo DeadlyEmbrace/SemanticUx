@@ -16,15 +16,21 @@ namespace AdminConsole.Views
             MainMenu.Add(Symbols.WebContent.Sidebar, "#")
                 .Toggle(Navigator);
             MainMenu.Add(new StaticMenuItem
-            {
+            {               
                Title = "Home" 
             });
+
+            var searchControl = new Input(ControlMenu)
+            {
+                Inverted = true,
+                PlaceHolder = "Search",
+                Size = InputSize.Small
+            }.WithIcon(Symbols.WebContent.Search);
 
             var controlDropdown = new DropdownMenu(ControlMenu)
             {
                 Title = "Bob Jones"
-            };
-            controlDropdown.Show();
+            }.Show();
 
             controlDropdown.Add(Symbols.UserTypes.User, "Profile", "/");
             controlDropdown.Add(Symbols.WebContent.Settings, "Settings", "/");

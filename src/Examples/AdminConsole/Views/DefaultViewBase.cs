@@ -13,6 +13,7 @@ namespace AdminConsole.Views
             MainMenu = new Menu(Container)
             {
                 Id = MainMenuCssClass,
+                Borderless = true,
                 Icon = true,
                 Inverted = true,
                 Color = Color.Blue

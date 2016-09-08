@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SemanticUx.Attributes;
+﻿using SemanticUx.Attributes;
 using SemanticUx.Components;
 
 namespace SemanticUx.Controls
@@ -17,11 +12,11 @@ namespace SemanticUx.Controls
         {
         }
 
-        [HtmlContent]
-        public string Title { get; set; }
-
         [HtmlClass]
         public HeaderSize Size { get; set; }
+
+        [HtmlContent]
+        public string Title { get; set; }
     }
 
     [HtmlTag("h1")]

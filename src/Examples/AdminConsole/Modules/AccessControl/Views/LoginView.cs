@@ -1,6 +1,7 @@
 ﻿using AdminConsole.Views;
 using SemanticUx.Components;
 using SemanticUx.Controls;
+using SemanticUx.Extensions;
 
 namespace AdminConsole.Modules.AccessControl.Views
 {
@@ -34,13 +35,14 @@ namespace AdminConsole.Modules.AccessControl.Views
             {
                 PlaceHolder = "Email Address",
                 Type = InputType.Email
-            };
+            }.Required()
+            .Email();
 
             var passwordField = new Field(segment)
             {
                 PlaceHolder = "Password",
                 Type = InputType.Password
-            };
+            }.Required();
 
             var button = new Button(segment)
             {

@@ -81,6 +81,8 @@
     <Compile Include="Controls\Icon.cs" />
     <Compile Include="Controls\IconHeader.cs" />
     <Compile Include="Controls\IControl.cs" />
+    <Compile Include="Controls\IIcon.cs" />
+    <Compile Include="Controls\Input.cs" />
     <Compile Include="Controls\Menu.cs" />
     <Compile Include="Controls\Message.cs" />
     <Compile Include="Controls\Modal.cs" />
@@ -90,9 +92,11 @@
     <Compile Include="Controls\Sidebar.cs" />
     <Compile Include="Controls\Size.cs" />
     <Compile Include="Controls\Symbols.cs" />
+    <Compile Include="Extensions\IFieldExtensions.cs" />
     <Compile Include="Extensions\Html5DocumentExtensions.cs" />
     <Compile Include="Extensions\IControlExtensions.cs" />
     <Compile Include="Extensions\IDropdownExtensions.cs" />
+    <Compile Include="Extensions\IIconExtensions.cs" />
     <Compile Include="Extensions\ILIstExtensions.cs" />
     <Compile Include="Extensions\MenuExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

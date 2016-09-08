@@ -16,7 +16,7 @@ namespace SemanticUx.Controls
         {
         }
 
-        public Icon Icon => _icon ?? (_icon ?? new Icon(this));
+        public Icon Icon => _icon ?? (_icon = new Icon(this));
 
         [HtmlAttribute("tabindex", "0")]
         public bool Focusable { get; set; }
