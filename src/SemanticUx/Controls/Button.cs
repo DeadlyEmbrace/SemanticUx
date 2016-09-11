@@ -3,7 +3,7 @@ using SemanticUx.Components;
 
 namespace SemanticUx.Controls
 {
-    [HtmlTag("button")]
+    [HtmlTag("div")]
     [HtmlClass("button")]
     public class Button : ControlBase
     {
@@ -50,6 +50,9 @@ namespace SemanticUx.Controls
 
         [HtmlClass("toggle")]
         public bool Toggle { get; set; }
+
+        [HtmlClass("submit")]
+        public bool Submit { get; set; }
 
         [HtmlClass]
         public ButtonState State { get; set; }

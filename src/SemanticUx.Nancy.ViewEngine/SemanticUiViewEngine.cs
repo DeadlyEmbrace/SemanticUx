@@ -20,7 +20,7 @@ namespace SemanticUx.Nancy.ViewEngine
             object typedModel = model;
             var viewAttribute = typedModel
                 .GetType()
-                .GetCustomAttribute<SemanticUiViewAttribute>();
+                .GetCustomAttribute<SemanticUxViewAttribute>();
 
             if (viewAttribute == null)
             {

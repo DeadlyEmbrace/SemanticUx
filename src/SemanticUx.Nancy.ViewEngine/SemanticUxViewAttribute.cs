@@ -3,9 +3,9 @@
 namespace SemanticUx.Nancy.ViewEngine
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class SemanticUiViewAttribute : Attribute
+    public class SemanticUxViewAttribute : Attribute
     {
-        public SemanticUiViewAttribute(Type viewType)
+        public SemanticUxViewAttribute(Type viewType)
         {
             ViewType = viewType;
         }

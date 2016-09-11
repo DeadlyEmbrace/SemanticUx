@@ -16,10 +16,6 @@ namespace SemanticUx.Components
 
         public string Compose(IComponent component)
         {
-//#if DEBUG
-//            var stopWatch = new Stopwatch();
-//            stopWatch.Start();
-//#endif            
             var tagAttribute = component.GetType()
                 .GetCustomAttributes<HtmlTagAttribute>(true)
                 .ToList()
@@ -62,7 +58,7 @@ namespace SemanticUx.Components
                 else
                 {
                     Compose(component[i]);
-                }                
+                }
             }
 
             if (tagAttribute?.Tag != null
@@ -72,13 +68,6 @@ namespace SemanticUx.Components
                     .Append(tagAttribute.Tag)
                     .Append(">");
             }
-
-//#if DEBUG
-//            stopWatch.Stop();
-//            _stringBuilder.Append("<!-- ")
-//                .Append(stopWatch.ElapsedMilliseconds)
-//                .Append(" ms -->");
-//#endif
 
             return _stringBuilder.ToString();
         }
@@ -92,14 +81,6 @@ namespace SemanticUx.Components
         {
             var propertyInfos = component.GetType()
                 .GetProperties();
-
-            if (component.Id != null)
-            {
-                _stringBuilder.Append(" id")
-                    .Append("=\"")
-                    .Append(component.Id)
-                    .Append("\"");
-            }
 
             foreach (var propertyInfo in propertyInfos)
             {
@@ -122,7 +103,8 @@ namespace SemanticUx.Components
                     }
                     else
                     {
-                        if (value != null)
+                        if (value != null
+                            && value.ToString() != "_")
                         {
                             _stringBuilder.Append(" ")
                                 .Append(htmlAttribute.Key)
@@ -179,11 +161,11 @@ namespace SemanticUx.Components
             }
 
             // TODO not cool but works - cannot assume implementation type
-            ComponentBase.Helper.CopyClasses((ComponentBase)component, classes);
+            ComponentBase.Helper.CopyClasses((ComponentBase) component, classes);
             // END
 
             if (classes.Count > 0)
-            {                
+            {
                 _stringBuilder.Append(" class=\"");
                 _stringBuilder.Append(string.Join(" ", classes));
                 _stringBuilder.Append("\"");

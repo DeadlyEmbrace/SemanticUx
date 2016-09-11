@@ -12,15 +12,14 @@ namespace AdminConsole.Views
             Navigator.Add(Symbols.WebContent.Home, "Home", "/");
             Navigator.Add(Symbols.WebContent.Calendar, "Projects", "/");
             Navigator.Add(Symbols.WebContent.Cloud, "Tasks", "/");
-
             MainMenu.Add(Symbols.WebContent.Sidebar, "#")
                 .Toggle(Navigator);
             MainMenu.Add(new StaticMenuItem
-            {               
-               Title = "Home" 
+            {
+                Title = "Home"
             });
 
-            var searchControl = new Input(ControlMenu)
+            var searchControl = new Input(new MenuItem(ControlMenu))
             {
                 Inverted = true,
                 PlaceHolder = "Search",

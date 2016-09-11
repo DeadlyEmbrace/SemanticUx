@@ -1,0 +1,16 @@
+FRAMEWORK: >= NET461
+NUGET
+  remote: http://api.nuget.org/v3/index.json
+    Microsoft.Owin (3.0.1)
+      Owin (>= 1.0)
+    Microsoft.Owin.Host.HttpListener (3.0.1)
+    Microsoft.Owin.Hosting (3.0.1)
+      Microsoft.Owin (>= 3.0.1)
+      Owin (>= 1.0)
+    Nancy (1.4.3)
+    Nancy.Hosting.Self (1.4.1)
+      Nancy (>= 1.4.1)
+    Nancy.Owin (1.4.1)
+      Nancy (>= 1.4.1)
+      Owin (>= 1.0)
+    Owin (1.0)

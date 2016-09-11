@@ -18,6 +18,9 @@ namespace SemanticUx.Controls
             Header = new MessageHeader(this);
         }
 
+        [HtmlClass]
+        public MessageKind Kind { get; set; }
+
         public MessageHeader Header;
     }
 
@@ -35,5 +38,14 @@ namespace SemanticUx.Controls
         {
             Prefix = null;
         }
+    }
+
+    public enum MessageKind
+    {
+        _,
+        Positive,
+        Success,
+        Negative,
+        Error
     }
 }

@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{04542C95-8FE3-471C-AEFF-6B1ADDE00DD7}"
+	ProjectSection(SolutionItems) = preProject
+		..\paket.dependencies = ..\paket.dependencies
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticUx", "SemanticUx\SemanticUx.csproj", "{867A42DC-FC9B-4730-A8DE-610AAD901DC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticUx.Nancy.ViewEngine", "SemanticUx.Nancy.ViewEngine\SemanticUx.Nancy.ViewEngine.csproj", "{A60639A0-058A-414C-82EC-C1D8301D5B2E}"

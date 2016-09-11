@@ -6,6 +6,7 @@ namespace SemanticUx.Components
     public interface IComponent : IComparable
     {
         string Id { get; set; }
+        IComponent Parent { get; }
         IComponent this[int index] { get; }
         int Count { get; }
         void Add(IComponent component);

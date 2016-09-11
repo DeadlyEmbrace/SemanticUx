@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SemanticUx</RootNamespace>
     <AssemblyName>SemanticUx</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,12 +93,15 @@
     <Compile Include="Controls\Sidebar.cs" />
     <Compile Include="Controls\Size.cs" />
     <Compile Include="Controls\Symbols.cs" />
+    <Compile Include="Extensions\IDropdownMenuExtensions.cs" />
     <Compile Include="Extensions\IFieldExtensions.cs" />
     <Compile Include="Extensions\Html5DocumentExtensions.cs" />
     <Compile Include="Extensions\IControlExtensions.cs" />
     <Compile Include="Extensions\IDropdownExtensions.cs" />
+    <Compile Include="Extensions\IFormExtensions.cs" />
     <Compile Include="Extensions\IIconExtensions.cs" />
     <Compile Include="Extensions\ILIstExtensions.cs" />
+    <Compile Include="Extensions\IModalExtensions.cs" />
     <Compile Include="Extensions\MenuExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

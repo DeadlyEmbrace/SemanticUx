@@ -6,7 +6,7 @@ namespace SemanticUx.Extensions
     // ReSharper disable once InconsistentNaming
     public static class IDropdownExtensions
     {
-        public static T Show<T>(this T self)
+        public static T ShowDropdown<T>(this T self)
             where T : IDropdown
         {
             var script = new Script

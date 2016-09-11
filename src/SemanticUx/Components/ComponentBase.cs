@@ -24,11 +24,12 @@ namespace SemanticUx.Components
 
         public IComponentList Components => _components ?? (_components = new ComponentList());
 
-        public void Add(IComponent component)
+        public virtual void Add(IComponent component)
         {
             Components.Add(component);
         }
 
+        [HtmlAttribute("id")]
         public string Id { get; set; }
 
         public IComponent this[int index] => _components?[index];

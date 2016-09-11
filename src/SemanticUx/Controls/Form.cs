@@ -1,11 +1,17 @@
-﻿using SemanticUx.Attributes;
+﻿using System.Collections.Generic;
+using SemanticUx.Attributes;
 using SemanticUx.Components;
 
 namespace SemanticUx.Controls
 {
+    public interface IForm : IControl
+    {
+        IList<IField> Fields { get; }
+    }
+
     [HtmlTag("form")]
     [HtmlClass("form")]
-    public class Form : ControlBase
+    public class Form : ControlBase, IForm
     {
         public Form()
             : this(null)
@@ -15,6 +21,27 @@ namespace SemanticUx.Controls
         public Form(IComponent parent)
             : base(parent)
         {
+            Id = GetHashCode()
+                .ToString();
+        }
+
+        public void AddToFields(IComponent component)
+        {
+            var item = component as IField;
+            if (item != null)
+            {
+                Fields.Add(item);
+            }
+        }
+
+        public IList<IField> Fields
+        {
+            get
+            {
+                var result = new List<IField>();
+                GetFields(this, result);
+                return result;
+            }
         }
 
         [HtmlAttribute("name")]
@@ -34,6 +61,23 @@ namespace SemanticUx.Controls
 
         [HtmlClass]
         public Size Size { get; set; }
+
+        private static void GetFields(IComponent component, IList<IField> fields)
+        {
+            foreach (var item in component.Components)
+            {
+                var field = item as IField;
+                if (field != null)
+                {
+                    fields.Add(field);
+                }
+
+                if (item.Count > 0)
+                {
+                    GetFields(item, fields);
+                }
+            }
+        }
 
     }
 

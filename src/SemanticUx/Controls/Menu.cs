@@ -113,6 +113,12 @@ namespace SemanticUx.Controls
         IMenuItem
     {
         public MenuItem()
+            : this(null)
+        {            
+        }
+
+        public MenuItem(IComponent parent)
+            : base(parent)
         {
             Prefix = null;
         }
@@ -150,11 +156,17 @@ namespace SemanticUx.Controls
         //...
     }
 
+    public interface IDropdownMenu :
+        IMenu,
+        IDropdown,
+        IIcon
+    {
+        Icon Indicator { get; }
+    }
+
     [HtmlTag("div")]
     [HtmlClass("dropdown item")]
-    public sealed class DropdownMenu : ControlBase,
-        IMenu,
-        IDropdown
+    public sealed class DropdownMenu : ControlBase, IDropdownMenu
     {
         // ReSharper disable once SuggestBaseTypeForParameter
         public DropdownMenu(IMenu menu)
@@ -163,9 +175,6 @@ namespace SemanticUx.Controls
             Id = GetHashCode()
                 .ToString();
             _menu = new Menu(this);
-            // TODO differentiate between icon and dropdown icon
-            Indicator.Symbol = Symbols.Dropdown;
-            Indicator.ZOrder = 999;
         }
 
         public IMenuItem Add(string symbol, string title, string href)

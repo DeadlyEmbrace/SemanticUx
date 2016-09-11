@@ -64,12 +64,12 @@ namespace SemanticUx.Controls
         public bool Labeled { get; set; } = true;
 
         [HtmlClass]
-        public SidebarPotition Position { get; set; }
+        public SidebarPosition Position { get; set; }
 
         [HtmlClass("vertical")]
         public bool Vertical { get; set; } = true;
 
-        [HtmlClass]
+        [HtmlClass("visible")]
         public bool Visible { get; set; }
 
         [HtmlClass]
@@ -119,12 +119,22 @@ namespace SemanticUx.Controls
         Very_Wide
     }
 
-    public enum SidebarPotition
+    public enum SidebarPosition
     {
         _,
         Left,
         Top,
         Right,
         Bottom
+    }
+
+    public enum SidebarTransition
+    {
+        Overlay,
+        Push,
+        Scale_Down,
+        Uncover,
+        Slide_Along,
+        Slide_Out
     }
 }

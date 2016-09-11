@@ -15,6 +15,9 @@ namespace SemanticUx.Components
         {
         }
 
+        [HtmlAttribute("name")]
+        public string Name { get; set; }
+
         [HtmlAttribute("type")]
         public InputType Type { get; set; }
 
