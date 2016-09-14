@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
+﻿using System.Text;
 using SemanticUx.Components;
 using SemanticUx.Controls;
 
@@ -12,13 +7,12 @@ namespace SemanticUx.Extensions
     // ReSharper disable once InconsistentNaming
     public static class IFormExtensions
     {
-        public static T Submit<T>(this T self)
-            where T : IForm
+        public static T Clear<T>(this T self) where T : IForm
         {
             var selector = $"$('#{self.Id}')";
             var script = new Script
             {
-                Content = $"{selector}.form('submit');"
+                Content = $"{selector}.form('clear');"
             };
             self.Add(script);
 
@@ -37,8 +31,7 @@ namespace SemanticUx.Extensions
             return $"return {selector}.form('validate form');";
         }
 
-        public static T Reset<T>(this T self)
-            where T : IForm
+        public static T Reset<T>(this T self) where T : IForm
         {
             var selector = $"$('#{self.Id}')";
             var script = new Script
@@ -50,23 +43,20 @@ namespace SemanticUx.Extensions
             return self;
         }
 
-        public static T Clear<T>(this T self)
-            where T : IForm
+        public static T Submit<T>(this T self) where T : IForm
         {
             var selector = $"$('#{self.Id}')";
             var script = new Script
             {
-                Content = $"{selector}.form('clear');"
+                Content = $"{selector}.form('submit');"
             };
             self.Add(script);
 
             return self;
         }
 
-        public static T Validate<T>(this T self)
-            where T : IForm
+        public static T Validate<T>(this T self) where T : IForm
         {
-
             var fields = self.Fields;
 
             if (fields.Count == 0)
