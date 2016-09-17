@@ -1,6 +1,7 @@
 FRAMEWORK: >= NET461
 NUGET
   remote: http://api.nuget.org/v3/index.json
+    FluentAssertions (4.14)
     Microsoft.Owin (3.0.1)
       Owin (>= 1.0)
     Microsoft.Owin.Host.HttpListener (3.0.1)
@@ -13,4 +14,5 @@ NUGET
     Nancy.Owin (1.4.1)
       Nancy (>= 1.4.1)
       Owin (>= 1.0)
+    NUnit (3.4.1)
     Owin (1.0)

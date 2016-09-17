@@ -30,7 +30,7 @@ namespace SemanticUx.Nancy.ViewEngine
             // TODO use stream writing HtmlComposer
             var htmlComposer = new DefaultHtmlBuilder();
             var view = Activator.CreateInstance(viewAttribute.ViewType, model);
-            htmlComposer.Compose(view);
+            htmlComposer.Build(view);
 
             return new HtmlResponse(contents: stream =>
             {
