@@ -31,6 +31,10 @@ bld/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# Cake
+tools/
+CoverageResults.xml
+
 # NUNIT
 *.VisualState.xml
 TestResult.xml

@@ -2,6 +2,6 @@
 {
     public interface IHtmlBuilder
     {
-        string Compose(IComponent component);
+        string Build(IComponent component);
     }
 }

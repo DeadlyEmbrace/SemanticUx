@@ -8,7 +8,7 @@ namespace SemanticUx.Components
         {
             foreach (var component in this)
             {
-                htmlBuilder.Compose(component);
+                htmlBuilder.Build(component);
             }
         }
     }

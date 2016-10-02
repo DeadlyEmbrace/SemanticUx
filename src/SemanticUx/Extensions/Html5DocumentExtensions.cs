@@ -7,7 +7,7 @@ namespace SemanticUx.Extensions
         public static string Render(this Html5Document self)
         {
             var htmlComposer = new DefaultHtmlBuilder();
-            htmlComposer.Compose(self);
+            htmlComposer.Build(self);
             return htmlComposer.ToString();
         }
     }

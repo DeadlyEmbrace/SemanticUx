@@ -14,7 +14,7 @@ namespace SemanticUx.Components
             _stringBuilder = new StringBuilder();
         }
 
-        public string Compose(IComponent component)
+        public string Build(IComponent component)
         {
             var tagAttribute = component.GetType()
                 .GetCustomAttributes<HtmlTagAttribute>(true)
@@ -57,7 +57,7 @@ namespace SemanticUx.Components
                 }
                 else
                 {
-                    Compose(component[i]);
+                    Build(component[i]);
                 }
             }
 
