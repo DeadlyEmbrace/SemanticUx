@@ -13,5 +13,9 @@ namespace SemanticUx.Controls
             : base(parent)
         {
         }
+
+        public string Prefix { get; set; } = defaultPrefix;
+
+        protected const string defaultPrefix = "ui";
     }
 }

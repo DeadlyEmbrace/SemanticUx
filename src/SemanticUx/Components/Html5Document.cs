@@ -11,7 +11,7 @@ namespace SemanticUx.Components
             title = new Title(this);
             StyleSheets = new StyleSheets();
             Scripts = new Scripts();
-
+            
             Head = new Head();
             Head.Add(StyleSheets);
             Head.Add(Scripts);
@@ -21,17 +21,7 @@ namespace SemanticUx.Components
             Components.Add(Body);
         }
 
-        public string Title
-        {
-            get
-            {
-                return title.Content;
-            }
-            set
-            {
-                title.Content = value;
-            }
-        }
+        public string Title { get; set; }
 
         public StyleSheets StyleSheets { get; }
 

@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using AdminConsole.Modules.Users.Models;
+using Nancy;
 using SemanticUx.Components;
 
 namespace AdminConsole.Modules.Users
@@ -6,6 +7,7 @@ namespace AdminConsole.Modules.Users
     public class Module : NancyModule
     {
         public Module()
+            : base("users")
         {
             Get["/signup"] = parameters =>
             {
@@ -26,6 +28,8 @@ namespace AdminConsole.Modules.Users
 
                 return htmlDocument;
             };
+
+            Get["/create"] = parameters => new CreateUserModel();
 
         }
     }

@@ -3,7 +3,7 @@ using SemanticUx.Nancy.ViewEngine;
 
 namespace AdminConsole.Modules.AccessControl.Models
 {
-    [SemanticUiView(typeof(LoginView))]
+    [SemanticUxView(typeof(LoginView))]
     public class LoginModel
     {
         public string EmailAddress { get; set; }

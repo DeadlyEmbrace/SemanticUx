@@ -1,6 +1,7 @@
 ﻿using AdminConsole.Views;
 using SemanticUx.Components;
 using SemanticUx.Controls;
+using SemanticUx.Extensions;
 
 namespace AdminConsole.Modules.AccessControl.Views
 {
@@ -32,21 +33,29 @@ namespace AdminConsole.Modules.AccessControl.Views
 
             var emailField = new Field(segment)
             {
+                Name = "email",
                 PlaceHolder = "Email Address",
                 Type = InputType.Email
-            };
+            }.Email();
 
             var passwordField = new Field(segment)
             {
+                Name = "password",
                 PlaceHolder = "Password",
                 Type = InputType.Password
-            };
+            }.Required();
 
             var button = new Button(segment)
             {
                 Title = "Login",
                 Fluid = true,
-                Size = Size.Large
+                Size = Size.Large,
+                Submit = true
+            };
+
+            var validationMessage = new Message(segment)
+            {
+                Kind = MessageKind.Error
             };
 
             var message = new Message(Container);
@@ -61,6 +70,9 @@ namespace AdminConsole.Modules.AccessControl.Views
                 Href = "/loginassist",
                 Content = "need help?"
             };
+
+            form.Validate();
+
 
         }
     }

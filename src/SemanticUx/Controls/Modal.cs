@@ -3,9 +3,14 @@ using SemanticUx.Components;
 
 namespace SemanticUx.Controls
 {
+    public interface IModal : IComponent
+    {
+        bool Closable { get; }
+    }
+
     [HtmlTag("div")]
     [HtmlClass("modal")]
-    public class Modal : ControlBase
+    public sealed class Modal : ControlBase, IModal
     {
         public Modal(IComponent parent)
             : base(parent)
@@ -20,12 +25,27 @@ namespace SemanticUx.Controls
 
         public ModalActions Actions { get; }
         public Icon CloseIcon { get; }
-        public new ModalContent Content { get; }
+        public ModalContent Content { get; }
+
+        public string Title
+        {
+            get
+            {
+                return Header.Title;
+            }
+            set
+            {
+                Header.Title = value;
+            }
+        }
+
+        [HtmlClass("closable")]
+        public bool Closable { get; set; }
 
         [HtmlClass("fullscreen")]
         public bool FullScreen { get; set; }
 
-        public ModalHeader Header { get; }
+        private ModalHeader Header { get; }
 
         [HtmlClass]
         public ModalSize Size { get; set; }
@@ -42,6 +62,9 @@ namespace SemanticUx.Controls
             : base(parent)
         {
         }
+
+        [HtmlContent]
+        public string Title { get; set; }
     }
 
     [HtmlTag("div")]

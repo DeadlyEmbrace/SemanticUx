@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SemanticUx.Components
 {
-    public interface IComponent
+    public interface IComponent : IComparable
     {
         string Id { get; set; }
+        IComponent Parent { get; }
         IComponent this[int index] { get; }
         int Count { get; }
         void Add(IComponent component);
@@ -12,5 +14,6 @@ namespace SemanticUx.Components
         IComponentList Components { get; }
         IDictionary<string, string> Attributes { get; }
         IList<string> Classes { get; }
+        int ZOrder { get; }
     }
 }

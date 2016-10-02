@@ -20,7 +20,7 @@ namespace SemanticUx.Nancy.ViewEngine
             object typedModel = model;
             var viewAttribute = typedModel
                 .GetType()
-                .GetCustomAttribute<SemanticUiViewAttribute>();
+                .GetCustomAttribute<SemanticUxViewAttribute>();
 
             if (viewAttribute == null)
             {
@@ -28,7 +28,7 @@ namespace SemanticUx.Nancy.ViewEngine
             }
 
             // TODO use stream writing HtmlComposer
-            var htmlComposer = new DefaultHtmlComposer();
+            var htmlComposer = new DefaultHtmlBuilder();
             var view = Activator.CreateInstance(viewAttribute.ViewType, model);
             htmlComposer.Compose(view);
 

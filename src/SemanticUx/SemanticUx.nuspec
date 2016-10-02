@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/21.0.07/nuspec.xsd">
+      <id>SemanticUx</id>
+      <version>0.0.0</version>
+      <authors>JC008</authors>
+      <owners>JC008</owners>
+      <title>SemanticUx</title>
+      <description></description>
+      <summary></summary>
+      <projectUrl>https://github.com/JC008/SemanticUx</projectUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) JC008 2016</copyright>
+      <releaseNotes></releaseNotes>
+      <tags>C# SemanticUx SemanticUI</tags>
+   </metadata>
+
+   <files>
+      <file src="/bin/Release/SemanticUx.dll" target="lib/451" />      
+   </files>
+</package>

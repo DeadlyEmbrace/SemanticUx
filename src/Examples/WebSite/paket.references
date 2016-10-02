@@ -1,0 +1,7 @@
+Microsoft.Owin
+Microsoft.Owin.Host.HttpListener
+Microsoft.Owin.Hosting
+Nancy
+Nancy.Hosting.Self
+Nancy.Owin
+Owin

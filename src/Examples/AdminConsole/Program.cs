@@ -3,11 +3,11 @@ using Microsoft.Owin.Hosting;
 
 namespace AdminConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var url = "http://localhost:8000";
+            const string url = "http://localhost:8000";
 
             using (WebApp.Start<Startup>(url))
             {

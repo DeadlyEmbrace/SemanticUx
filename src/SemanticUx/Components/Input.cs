@@ -15,11 +15,17 @@ namespace SemanticUx.Components
         {
         }
 
+        [HtmlAttribute("name")]
+        public string Name { get; set; }
+
         [HtmlAttribute("type")]
         public InputType Type { get; set; }
 
         [HtmlAttribute("placeholder")]
         public string PlaceHolder { get; set; }
+
+        [HtmlContent]
+        public string Value { get; set; }
     }
 
     public enum InputType

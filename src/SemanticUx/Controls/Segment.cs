@@ -5,7 +5,7 @@ namespace SemanticUx.Controls
 {
     [HtmlTag("div")]
     [HtmlClass("segment")]
-    public class Segment : ComponentBase
+    public class Segment : ControlBase
     {
         public Segment(IComponent parent)
             : base(parent)

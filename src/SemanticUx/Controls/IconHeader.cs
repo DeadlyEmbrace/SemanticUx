@@ -27,29 +27,20 @@ namespace SemanticUx.Controls
         [HtmlClass]
         public Size Size { get; set; }
 
-        public string Title
-        {
-            get
-            {
-                return Content.Content;
-            }
+        [HtmlContent]
+        public string Title { get; set; }
 
-            set
-            {
-                Content.Content = value;
-            }
-        }
-
-        public new IconHeaderContent Content { get; }
+        public IconHeaderContent Content { get; }
     }
 
     [HtmlTag("div")]
-    [HtmlClass("content", Prefix = null)]
-    public class IconHeaderContent : ComponentBase
+    [HtmlClass("content")]
+    public class IconHeaderContent : ControlBase
     {
         public IconHeaderContent(IComponent parent)
             : base(parent)
         {
+            Prefix = null;
         }
     }
 }

@@ -15,6 +15,9 @@ namespace SemanticUx.Components
         {
         }
 
+        [HtmlContent]
+        public string Content { get; set; }
+
         [HtmlAttribute("href")]
         public string Href { get; set; }
 

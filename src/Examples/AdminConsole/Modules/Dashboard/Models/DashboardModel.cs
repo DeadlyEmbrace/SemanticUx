@@ -3,7 +3,7 @@ using SemanticUx.Nancy.ViewEngine;
 
 namespace AdminConsole.Modules.Dashboard.Models
 {
-    [SemanticUiView(typeof(DefaultView))]
+    [SemanticUxView(typeof(DefaultView))]
     public class DashboardModel
     {
     }

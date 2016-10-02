@@ -3,7 +3,7 @@ using SemanticUx.Components;
 
 namespace SemanticUx.Controls
 {
-    [HtmlTag("button")]
+    [HtmlTag("div")]
     [HtmlClass("button")]
     public class Button : ControlBase
     {
@@ -16,7 +16,7 @@ namespace SemanticUx.Controls
         {
         }
 
-        public Icon Icon => _icon ?? (_icon ?? new Icon(this));
+        public Icon Icon => _icon ?? (_icon = new Icon(this));
 
         [HtmlAttribute("tabindex", "0")]
         public bool Focusable { get; set; }
@@ -51,6 +51,9 @@ namespace SemanticUx.Controls
         [HtmlClass("toggle")]
         public bool Toggle { get; set; }
 
+        [HtmlClass("submit")]
+        public bool Submit { get; set; }
+
         [HtmlClass]
         public ButtonState State { get; set; }
         
@@ -83,5 +86,13 @@ namespace SemanticUx.Controls
         Button,
         Reset,
         Submit
+    }
+
+    public enum ButtonState
+    {
+        _,
+        Active,
+        Disabled,
+        Loading
     }
 }
