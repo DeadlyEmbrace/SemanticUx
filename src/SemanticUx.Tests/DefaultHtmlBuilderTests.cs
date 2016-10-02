@@ -4,11 +4,28 @@ using FluentAssertions;
 using NUnit.Framework;
 using SemanticUx.Attributes;
 using SemanticUx.Components;
+using SemanticUx.Controls;
 
 namespace SemanticUx.Tests
 {
     public class DefaultHtmlBuilderTests
     {
+        [Test]
+        public void BuildsWithSpecifiedHtmlTag()
+        {
+            // arrange 
+            var sut = new DefaultHtmlBuilder();
+            var subject = new DivHtmlTagSubject();
+
+            // act
+            var result = sut.Build(subject);
+
+            // assert
+            result.Should()
+                .StartWith("<div class=\"ui\">")
+                .And.EndWith("</div>");
+        }
+
         [Test]
         public void BuildsFullHtmlTag()
         {
@@ -21,7 +38,7 @@ namespace SemanticUx.Tests
 
             // assert
             result.Should()
-                .StartWith("<test>")
+                .StartWith("<test class=\"ui\">")
                 .And.EndWith("</test>");
         }
 
@@ -37,7 +54,7 @@ namespace SemanticUx.Tests
 
             // assert
             result.Should()
-                .Be("<test>");
+                .Be("<test class=\"ui\">");
         }
 
         [Test]
@@ -70,7 +87,7 @@ namespace SemanticUx.Tests
 
             // assert
             result.Should()
-                .Be("<test class=\"active\"></test>");
+                .Be("<test class=\"ui active\"></test>");
         }
 
         [Test]
@@ -88,7 +105,7 @@ namespace SemanticUx.Tests
 
             // assert
             result.Should()
-                .Be("<test></test>");
+                .Be("<test class=\"ui\"></test>");
         }
 
         [Test]
@@ -106,32 +123,70 @@ namespace SemanticUx.Tests
 
             // assert
             result.Should()
-                .Be("<test class=\"red\"></test>");
+                .Be("<test class=\"ui red\"></test>");
+        }
+
+        [Test]
+        public void BuildsStringHtmlClass()
+        {
+            // arrange 
+            var sut = new DefaultHtmlBuilder();
+            var subject = new StringHtmlClassSubject
+            {
+                Size = StringHtmlClassSubject.SubjectSize
+            };
+
+            // act
+            var result = sut.Build(subject);
+
+            // assert
+            result.Should()
+                .Be("<test class=\"ui huge\"></test>");
+        }
+
+        [Test]
+        public void BuildsWithDefaultClassPrefix()
+        {
+            // arrange 
+            var sut = new DefaultHtmlBuilder();
+            var subject = new DefaultPrefixedHtmlClassSubject();
+
+            // act
+            var result = sut.Build(subject);
+
+            // assert
+            result.Should()
+                .Be("<test class=\"ui test\"></test>");
+        }
+
+        [HtmlTag("div")]
+        private class DivHtmlTagSubject : ControlBase
+        {
         }
 
         [HtmlTag("test")]
-        private class FullHtmlTagSubject : ComponentBase
+        private class FullHtmlTagSubject : ControlBase
         {
         }
 
         [HtmlTag("test", IsEmpty = true)]
-        private class EmptyHtmlTagSubject : ComponentBase
+        private class EmptyHtmlTagSubject : ControlBase
         {
         }
 
-        private class NakedHtmlTagSubject : ComponentBase
+        private class NakedHtmlTagSubject : ControlBase
         {
         }
 
         [HtmlTag("test")]
-        private class NamedHtmlClassSubject : ComponentBase
+        private class NamedHtmlClassSubject : ControlBase
         {
             [HtmlClass("active")]
             public bool Active { get; set; }
         }
 
         [HtmlTag("test")]
-        private class EnumHtmlClassSubject : ComponentBase
+        private class EnumHtmlClassSubject : ControlBase
         {
             [HtmlClass()]
             public SubjectColor Color { get; set; }
@@ -141,6 +196,41 @@ namespace SemanticUx.Tests
                 Blue,
                 Green,
                 Red
+            }
+        }
+
+        [HtmlTag("test")]
+        private class StringHtmlClassSubject : ControlBase
+        {
+            [HtmlClass]
+            public string Size { get; set; }
+
+            public const string SubjectSize = "huge";
+        }
+
+        [HtmlTag("test")]
+        [HtmlClass("test")]
+        private class DefaultPrefixedHtmlClassSubject : ControlBase
+        {
+        }
+
+        [HtmlTag("test")]
+        [HtmlClass("test")]
+        private class NonPrefixedHtmlClassSubject : ControlBase
+        {
+            public NonPrefixedHtmlClassSubject()
+            {
+                Prefix = null;
+            }
+        }
+
+        [HtmlTag("test")]
+        [HtmlClass("test")]
+        private class CustomPrefixedHtmlClassSubject : ControlBase
+        {
+            public CustomPrefixedHtmlClassSubject()
+            {
+                Prefix = "test";
             }
         }
 
