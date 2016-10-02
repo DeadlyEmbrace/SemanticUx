@@ -1,0 +1,61 @@
+version: 0.1.{build}
+
+branches:
+  only:
+    - master
+    - develop
+
+environment:
+  my_var1: value1
+  my_var2: value2
+  my_secure_var1:
+    secure: FW3tJ3fMncxvs58/ifSP7w==
+
+matrix:
+  fast_finish: true
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "2.2.{build}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+
+nuget:
+  account_feed: true
+  project_feed: true
+  disable_publish_on_pr: true
+
+platform: Any CPU
+
+configuration: Release
+
+build:
+  publish_nuget: true 
+
+build_script:
+    ./build.ps1
+
+test:
+  assemblies:
+    - SemanticUx.Tests.dll
+
+artifacts:
+  - path: test.zip
+  - path: logs
+  - path: '**\*.nupkg'
+
+deploy:
+  - provider: NuGet
+    server: https://my.nuget.server/feed
+    api_key:
+      secure: FYWX6NfjZIVw==
+    skip_symbols: false
+    symbol_server: https://your.symbol.server/feed
+    artifact: MyPackage.nupkg
+
+notifications:
+  - provider: Email
+    to:
+      - jaco.coetzee.za+github@gmail.com
+    on_build_status_changed: true
